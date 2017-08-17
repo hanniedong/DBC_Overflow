@@ -1,0 +1,11 @@
+
+<% if current_user %>
+  Welcome back <a href="/users/<%= current_user.id %>"> <%= current_user.full_name %></a>
+  | <%= erb :"/sessions/_delete" %>
+<% else %>
+  <h3>Not currently logged in</h3>
+  <a href="/sessions/new">Login</a>
+  | <a href="/users/new">Register </a>
+
+<% end %>
+| <a href="/">Home</a>
