@@ -1,4 +1,9 @@
 require 'faker'
+  User.delete_all
+  Question.delete_all
+  Answer.delete_all
+  Comment.delete_all
+  Vote.delete_all
 
 
 
