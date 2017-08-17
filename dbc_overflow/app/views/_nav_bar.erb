@@ -1,10 +1,8 @@
 <h2 style="display: inline;">DBC oVeRfLoW</h2>
 <a href="/questions">Questions</a>
 <% if current_user %>
-   Welcome back <a href="/users/<%= current_user.id %>"> <%= current_user.username %></a>
   | <%= erb :"/sessions/_delete" %>
 <% else %>
-  <h3>Not currently logged in</h3>
   <a href="/sessions/new">Login</a>
   | <a href="/users/new">Register </a>
 
