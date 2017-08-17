@@ -1,0 +1,19 @@
+<style>
+  .logout {
+    display: inline;
+  }
+  .logout input{
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font: inherit;
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+  }
+</style>
+
+<form action="/logout" method="post" class="logout" >
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Logout">
+</form>
