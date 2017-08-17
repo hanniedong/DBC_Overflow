@@ -18,8 +18,24 @@
   
   <title></title>
 </head>
-<body>
-  <%= erb :'_nav_bar', layout:false %>
+
+<nav class="so-header">
+    <div class="-container">
+      <a class="logo" href="/">DBC Overflow</a>
+      <% if current_user %>
+          Welcome back  <%= current_user.username %>
+          <a class="button" href="/questions/new">Ask a Question</a>
+        <% else %>
+          <h3>Not currently logged in</h3>
+      <% end %>
+   
+     
+      <%= erb :'_nav_bar', layout:false %>
+   
+  </div>
+</header>
+<div class="container">
+    <div id="content">
   <%= erb :'_errors', layout:false %>
   <%= yield %>
 </body>
