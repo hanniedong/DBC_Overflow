@@ -1,0 +1,67 @@
+API LECTURE 
+
+-used to deliver interactive content
+---------------------------------------------------------------------------------------------------------
+API USAGE
+-need to set up models to use API 
+-can create module in models folder that allows you to use API 
+----------------------------------------------------------------------------------------------------------
+API DOCUMENTATION 
+-can look up API gems in github that allows you to use API (example Twitter ruby gem)
+----------------------------------------------------------------------------------------------------------
+API: ENDPOINT
+-POSTMAN (helpful tool for API) is a tool that can make web requests and displays data that is sent back to you 
+  -https://www.getpostman.com/
+-HOST: where the GIPHY API lives 
+-PATH: url path
+-request parameters: what is required when making the PATH request 
+----------------------------------------------------------------------------------------------------------
+API KEYS
+-want to hide API key and not have in url for security purposes
+-gem DOTENV will hide API key 
+  -add in gemfile
+  -create .env file
+    -file has keys 
+    -in module call api_key = ENV['whatever key is label']
+    -in module, interpolate api_key in URL 
+  -add .env in gitignore file 
+-environment.rb 
+  -call Dotenv.load
+----------------------------------------------------------------------------------------------------------
+API GIPHY EXAMPLE
+----------------------------------------------------------------------------------------------------------
+GIPHY CONTROLLER
+  get 'giphy/search' do 
+  erb :'/giphy/search.html'
+  end 
+
+  post 'giphy/search' do 
+    @results = GiphyAdapter.search(params[:search])
+    erb :'/giphy/results.html'
+      #send search data to giphy module
+      #take results and render them 
+  end 
+----------------------------------------------------------------------------------------------------------
+MODULE GiphyAdapter
+
+  def self.search(search_string)
+    url = URI(url from postman app) *** hide API key 
+    http = Net::HTTP::Get.new(url)
+    response = http.request(request)
+    body = JSON.parase(response.read_body)
+    body['data'].map { |hash| hash['images']['fixed_witdh']['url']}
+      #make HTTP calls to Giphy API
+      #get results
+      #parse results to grab what we want 
+      #send those results back to the controller
+  end 
+end 
+----------------------------------------------------------------------------------------------------------
+results.html 
+
+@results.each do |result|
+  <img src = 'result'>
+end 
+
+
+

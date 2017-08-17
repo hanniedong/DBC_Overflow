@@ -1,4 +1,9 @@
-DBC_Overflow
+
+# DBC_Overflow
+
+Team Name: Fanstastic Four 
+
+Team Members: Nestor Ceron, J Stamps, Hannie Dong, Josh Nickell 
 
 MVP:
 A website with user registration and user authentication. 
