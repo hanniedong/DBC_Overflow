@@ -1,6 +1,7 @@
-get '/questions/:question_id/comments/new' do
-  @question = question.find(params[:question_id])
-  erb :'comments/new'
+get '/questions/:question_id/comments' do
+  @question = Question.find(params[:question_id])
+  @comments = Comment.where(commentable_id: params[:question_id])
+  erb :'questions/comments/show'
 end
 
 post '/questions/:question_id/comments' do
@@ -10,6 +11,6 @@ post '/questions/:question_id/comments' do
   if @comment.save
     redirect "/questions/#{@question.id}/comments"
   else
-    erb :'comments/new' #show new comments view again(potentially displaying errors)
+    erb :'questions/comments/new' #show new comments view again(potentially displaying errors)
   end
 end
