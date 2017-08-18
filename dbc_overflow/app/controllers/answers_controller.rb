@@ -24,3 +24,14 @@ post '/answers/:answer_id/comments' do
     erb :'comments/new' #show new comments view again(potentially displaying errors)
   end
 end
+
+post '/answers/:id/upvote' do
+  @answer = Answer.find(params[:id])
+  @answer.votes.create(voteable_type: Answer)
+  
+  if request.xhr?
+      @answer.total_votes.to_s
+  else
+      erb :'/answer/show'
+  end
+end

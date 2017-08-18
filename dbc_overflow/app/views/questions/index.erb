@@ -2,7 +2,9 @@
 
 <% @questions.each do |question| %>
 	<li>
-		<a href="/questions/<%= question.id %>"><%= question.title %></a>
+	<h2><a href="/questions/<%= question.id %>"><%= question.title %></a></h2>
 		<p><%= question.content %></p>
+			<p><span><%= question.votes %></span> votes</p>
+		
 	</li>
 <% end %>
