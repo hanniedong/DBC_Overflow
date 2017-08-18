@@ -1,6 +1,7 @@
 post '/questions/:question_id/answers' do
   @question = Question.find(params[:question_id])
-  @answer = @question.answers.new(params[:answer])
+  # binding.pry
+  @answer = @question.answers.new(content: params[:content], question_id: params[:question_id], user_id: session[:user_id])
 
   if @answer.save
     redirect "/questions/#{@question.id}/answers"
@@ -28,7 +29,7 @@ end
 post '/answers/:id/upvote' do
   @answer = Answer.find(params[:id])
   @answer.votes.create(voteable_type: Answer)
-  
+
   if request.xhr?
       @answer.total_votes.to_s
   else

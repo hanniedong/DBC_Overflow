@@ -2,6 +2,7 @@
   <% if @question.answers %>
     <% @question.answers.each do |answer| %>
       <%= answer.content %>
+      <br>
    	<% end %>
   <% end %>
 </div>

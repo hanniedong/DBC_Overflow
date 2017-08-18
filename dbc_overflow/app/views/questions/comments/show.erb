@@ -1,3 +1,5 @@
-<% @comments.each do |comment| %>
-  <li><%= comment.content %></li>
+<% if @comments %>
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
 <% end %>
