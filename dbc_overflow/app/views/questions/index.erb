@@ -1,4 +1,5 @@
 <h2>All Questions</h2>
+<ul>
 <% @questions.each do |question| %>
 	<li>
 	<h2><a href="/questions/<%= question.id %>"><%= question.title %></a></h2>
@@ -7,3 +8,4 @@
 		
 	</li>
 <% end %>
+</ul>

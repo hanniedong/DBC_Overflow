@@ -8,8 +8,12 @@
 </style>
 
 <div class="answers">
+	
+	    
   <% if @question.answers %>
+  <!-- needs vote button, need answers association -->
     <% @question.answers.each do |answer| %>
+
       <li>
       <%= answer.content %>
       <br>

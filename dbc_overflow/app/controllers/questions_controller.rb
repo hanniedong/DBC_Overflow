@@ -3,7 +3,6 @@ get '/questions' do
 	erb :'/questions/index'
 end
 
-
 get '/questions/new' do
   erb :'/questions/new'
 end
@@ -20,15 +19,14 @@ get '/questions/:id' do
 end
 
 post '/questions/:id/upvote' do
-    @question = Question.find(params[:id])
-    @question.votes.create(voteable_type: Question)
-    @question.votes.to_s
-		# erb :'/questions/show'
-    if request.xhr?
-        @question.votes.to_s
-    else
-        erb :'/questions/show'
-    end
+  @question = Question.find(params[:id])
+  @question.votes.create
+  @question.votes.to_s
+	erb :'/questions/show'
+
+  # if request.xhr?
+  #     @question.votes.to_s
+  # else
+  #     erb :'/questions/show'
+  # end
 end
-# div container attr = id='question' class='question'
-# VOTE up button div class="vote"

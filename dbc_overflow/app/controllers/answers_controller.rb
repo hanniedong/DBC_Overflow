@@ -29,7 +29,8 @@ end
 
 post '/answers/:id/upvote' do
   @answer = Answer.find(params[:id])
-  @answer.votes.create(voteable_type: Answer)
+  @answer.votes.create
+  @answer.total_votes.to_s
 
   if request.xhr?
       @answer.total_votes.to_s
