@@ -22,7 +22,7 @@ post '/questions/:id/upvote' do
     @question = Question.find(params[:id])
     @question.votes.create(voteable_type: Question)
     @question.votes.to_s
-		# erb :'/questions/show'
+		erb :'/questions/show'
     if request.xhr?
         @question.votes.to_s
     else
