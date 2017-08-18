@@ -1,4 +1,18 @@
-<h2> Question Show page</h2>
+<h1><%= @question.title %></h1>
+	<div class="content">
+	  <p><%= @question.content %></p>
+	    <a class="upvote-arrow" href="/questions/<%= @question.id %>/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
 
-<p><%= @question.title %></p>
-<p><%= @question.content %></p>
+	    <% if @question.votes %>
+	    <p class="question-points">question points: <span><%= @question.votes %></span></p>
+	    <% end %>
+	</div>
+<hr/>
+<% if logged_in? %>
+	<%= erb :'/questions/answers/new', layout: false, locals: { question: @question } %>
+	<%= erb :'/questions/comments/new', :layout => false, :locals => { question: @question } %>
+<hr/>
+<% end %>
+	<%= erb :'/questions/answers/show', layout: false, locals: { question: @question } %>
+<hr/>
+	<%= erb :'/questions/comments/show', layout: false, locals: { question: @question } %>
