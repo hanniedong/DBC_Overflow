@@ -18,6 +18,6 @@
 	<%= erb :'/questions/comments/new', layout: false, locals: {question: @question} %>
 <hr/>
 <% end %>
-	<%= erb :'/questions/answers/show', layout: false, locals: {question: @question, chicken: @user_of_answer} %>
+	<%= erb :'/questions/answers/show', layout: false, locals: {question: @question, user_of_answer: @user_of_answer} %>
 <hr/>
 	<%= erb :'/questions/comments/show', layout: false, locals: {question:@question} %>
