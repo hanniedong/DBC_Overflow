@@ -1,8 +1,21 @@
+<style type="text/css">
+.answers li{
+  list-style-type:none;
+  width: 98%;
+  float: right;
+
+}
+</style>
+
 <div class="answers">
   <% if @question.answers %>
     <% @question.answers.each do |answer| %>
+      <li>
       <%= answer.content %>
       <br>
+      - <em><%= @user.username %></em>
+      <hr>
+      </li>
    	<% end %>
   <% end %>
 </div>
