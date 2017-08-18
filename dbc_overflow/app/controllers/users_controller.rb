@@ -22,6 +22,6 @@ end
 
 # User profile page redirect 
 get '/users/:id' do
-  current_user
+  @user = User.find(params[:id])
   erb :'/users/show'
 end

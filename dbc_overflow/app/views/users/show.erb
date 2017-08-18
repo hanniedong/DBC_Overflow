@@ -1,16 +1,9 @@
-<% if !logged_in? %>
-  <%= erb :_authentication %>
-  <a href = '/sessions/new'> Click here to login </a>
+
+  <h2><%= @user.username %></h2>
 
 
-
-<% else %>
-  <h2><%= @current_user.username %></h2>
-
-
-  <h4>Email: <%= @current_user.email %></h4>
+  <h4>Email: <%= @user.email %></h4>
   <br>
   <h4> Statistics </h4>
-  <p> Total Questions: <%= @current_user.questions.count %></p>
-  <p> Total Answers: <%= current_user.answers.count  %>
-<% end %>
+  <p> Total Questions: <%= @user.questions.count %></p>
+  <p> Total Answers: <%= @user.answers.count  %>
