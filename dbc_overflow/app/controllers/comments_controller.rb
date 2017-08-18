@@ -1,7 +1,15 @@
 get '/questions/:question_id/comments' do
   @question = Question.find(params[:question_id])
   @comments = Comment.where(commentable_id: params[:question_id])
-  erb :'questions/comments/show'
+
+  if @comments
+    erb :'questions/comments/show'
+    p 'in if'
+  else
+    redirect :'questions/comments/new'
+    p 'in else'
+  end
+
 end
 
 post '/questions/:question_id/comments' do

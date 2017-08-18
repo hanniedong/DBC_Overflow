@@ -1,10 +1,25 @@
+<style type="text/css">
+.answers li{
+  list-style-type:none;
+  width: 98%;
+  float: right;
+
+}
+</style>
+
 <div class="answers">
 	
 	    
   <% if @question.answers %>
   <!-- needs vote button, need answers association -->
     <% @question.answers.each do |answer| %>
-      <%= answer.total_votes %> Votes - Answer's:<br> <%= answer.content %>
+
+      <li>
+      <%= answer.content %>
+      <br>
+      - <em><%= @user.username %></em>
+      <hr>
+      </li>
    	<% end %>
   <% end %>
 </div>
