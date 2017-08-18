@@ -1,10 +1,10 @@
 post '/questions/:question_id/answers' do
   @question = Question.find(params[:question_id])
     # binding.pry
-  @user = User.find_by(id: session[:user_id])s
+  # @user = current_user
   @answer = @question.answers.new(content: params[:content], question_id: params[:question_id], user_id: session[:user_id])
-
-  if @answer.save
+  @user_of_answer = User.find_by(id: @answer.user_id)
+   if @answer.save
     redirect "/questions/#{@question.id}"
   else
     erb :'answers/new' #show new answers view again(potentially displaying errors)
