@@ -1,3 +1,8 @@
+get '/users' do 
+  @users = User.all
+  erb :'users/index'
+end 
+
 # New user
 get '/users/new' do
     erb :'users/new'
@@ -17,8 +22,6 @@ end
 
 # User profile page redirect 
 get '/users/:id' do
-  # redirect '/sessions/new' unless logged_in?
-  @user = User.find(params[:id])
-  
+  current_user
   erb :'/users/show'
 end
