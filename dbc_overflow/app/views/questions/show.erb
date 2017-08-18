@@ -1,8 +1,20 @@
 <h1><%= @question.title %></h1>
 	<div class="content" >
 	  <p><%= @question.content %></p>
-			<div class="vote">	
-			  
+	  <div class="comments">
+			<% if !@question.comments.nil? %>
+				<% @question.comments.each do |comment| %>
+				  <div class="comment">
+				    <li><%= comment.content %></li>
+				    <br>
+				    - <em><%= comment.user.username %></em>
+				    <br><br>
+				  </div>
+				<% end %>
+			<% end %>
+		</div>
+			<div class="vote">
+
 				<form method="post" action='/questions/<%= @question.id %>/upvote' >
 	    		<button type="submit"  class="upvote-arrow vote-up-on" ></button>
 	    	</form>
@@ -16,7 +28,7 @@
 <% if logged_in? %>
 	<%= erb :'/questions/answers/new', layout: false, locals: {question: @question} %>
 	<%= erb :'/questions/comments/new', layout: false, locals: {question: @question} %>
-<hr/>
+
 <% end %>
 	<%= erb :'/questions/answers/show', layout: false, locals: {question: @question, user_of_answer: @user_of_answer} %>
 <hr/>

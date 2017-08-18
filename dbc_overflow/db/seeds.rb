@@ -1,5 +1,5 @@
 require 'faker'
-  
+
 
   para = Faker::Lorem.paragraph
 

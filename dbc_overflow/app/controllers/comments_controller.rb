@@ -4,10 +4,8 @@ get '/questions/:question_id/comments' do
 
   if @comments
     erb :'questions/comments/show'
-    p 'in if'
   else
     redirect :'questions/comments/new'
-    p 'in else'
   end
 
 end

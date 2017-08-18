@@ -1,8 +1,17 @@
+<style type="text/css">
+.comments li{
+  list-style-type:none;
+  width: 98%;
+  float: right;
+}
+</style>
 
-<div class="answers">
+<div class="comments">
 <% if @comments %>
 	<% @comments.each do |comment| %>
 	  <li><%= comment.content %></li>
+    <br>
+    - <em><%= comment.user.username %></em>
 	<% end %>
 <% end %>
 </div>
