@@ -5,4 +5,13 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
+
+
+  def total_votes
+     votes.count
+  end
+
+  def current_date_time
+		DateTime.now
+  end
 end
