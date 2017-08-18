@@ -1,25 +1,38 @@
 <style type="text/css">
-.answers li{
-  list-style-type:none;
-  width: 98%;
-  float: right;
+.answers{
 
+}
+.comments{
+  list-style-type:none;
+  width: 95%;
+  margin-left: 30px;
+}
+.comment{
+  display: block !important;
 }
 </style>
 
 <div class="answers">
-	
-	    
   <% if @question.answers %>
   <!-- needs vote button, need answers association -->
     <% @question.answers.each do |answer| %>
-
-      <li>
+    <hr>
       <%= answer.content %>
       <br>
       - <em><%= answer.user.username %></em>
-      <hr>
-      </li>
+      <br>
+      <div class="comments">
+      <% if !answer.comments.nil? %>
+        <% answer.comments.each do |comment| %>
+        <div class="comment">
+          <li><%= comment.content %></li>
+          <br>
+          - <em><%= comment.user.username %></em>
+          <br><br>
+        </div>
+        <% end %>
+      <% end %>
+      </div>
    	<% end %>
   <% end %>
 </div>
