@@ -8,6 +8,10 @@ class Question < ActiveRecord::Base
 
 
   def total_votes
-      votes.count
+     votes.count
+  end
+
+  def current_date_time
+		DateTime.now
   end
 end

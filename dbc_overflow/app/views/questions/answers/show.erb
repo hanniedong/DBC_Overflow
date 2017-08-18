@@ -1,9 +1,10 @@
 <div class="answers">
-
+	
 	    
   <% if @question.answers %>
+  <!-- needs vote button, need answers association -->
     <% @question.answers.each do |answer| %>
-      <%= answer.total_votes %> Votes - Answer:<br> <%= answer.content %>
+      <%= answer.total_votes %> Votes - Answer's:<br> <%= answer.content %>
    	<% end %>
   <% end %>
 </div>

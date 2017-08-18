@@ -1,5 +1,6 @@
 <hr>
 <div>
-  <p></p>
-  <a href="">User name</a>Date create
+
+  <p>New Comments:</p>
+  <a href="/users/<%= current_user.id %>"><%= current_user.username %></a> - <%= @question.current_date_time.strftime("%a, %e %b %Y") %>
 </div>

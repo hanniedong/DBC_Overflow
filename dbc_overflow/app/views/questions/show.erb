@@ -1,19 +1,21 @@
 <h1><%= @question.title %></h1>
-	<div class="content">
+	<div class="content" >
 	  <p><%= @question.content %></p>
+			<div class="vote">	
+			  
+				<form method="post" action='/questions/<%= @question.id %>/upvote' >
+	    		<button type="submit"  class="upvote-arrow vote-up-on" ></button>
+	    	</form>
 
-	  <form method="post" action='/questions/<%= @question.id %>/upvote' class="inline">
-	    <button type="submit" name="submit_param" value="submit_value" class="upvote-arrow vote-up-on" ></button>
-	    </form>
-
-	    <% if @question.total_votes %>
-	    <p class="question-points"> Votes: <span><%= @question.total_votes %></span></p>
-	    <% end %>
+		    <% if @question.total_votes %>
+		    <p class="question-points" > Votes: <span><%= @question.total_votes %></span></p>
+		    <% end %>
+	    </div>
 	</div>
 <hr/>
 <% if logged_in? %>
-	<%= erb :'/questions/answers/new', layout: false, locals: {question: @question, } %>
-	<%= erb :'/questions/comments/new', layout: false, locals: {question: @question } %>
+	<%= erb :'/questions/answers/new', layout: false, locals: {question: @question} %>
+	<%= erb :'/questions/comments/new', layout: false, locals: {question: @question} %>
 <hr/>
 <% end %>
 	<%= erb :'/questions/answers/show', layout: false, locals: {question: @question} %>
