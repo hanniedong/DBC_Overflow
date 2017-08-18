@@ -1,9 +1,11 @@
 post '/questions/:question_id/answers' do
+  p "*"*88
+  p current_user.id
   @question = Question.find(params[:question_id])
     # binding.pry
   # @user = current_user
-  @answer = @question.answers.new(content: params[:content], question_id: params[:question_id], user_id: session[:user_id])
-  @user_of_answer = User.find_by(id: @answer.user_id)
+  @answer = @question.answers.new(content: params[:content], question_id: params[:question_id], user_id: current_user.id)
+  # @user_of_answer = User.find_by(id: @answer.user_id)
    if @answer.save
     redirect "/questions/#{@question.id}"
   else
@@ -13,6 +15,7 @@ end
 
 get '/answers/:answer_id/comments/new' do
   @answer = Answer.find(params[:answer_id])
+
   erb :'comments/new'
 end
 
