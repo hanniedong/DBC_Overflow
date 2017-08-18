@@ -1,5 +1,5 @@
 post '/questions/:question_id/answers' do
-  @question = question.find(params[:question_id])
+  @question = Question.find(params[:question_id])
   @answer = @question.answers.new(params[:answer])
 
   if @answer.save
