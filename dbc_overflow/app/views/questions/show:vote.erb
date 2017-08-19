@@ -1,0 +1,25 @@
+
+
+<h1><%= @question.title %></h1>
+  <div class="content" >
+    <p><%= @question.content %></p>
+  <% if logged_in? %>
+    <%= erb :_upvote, locals: {question: @question} %>
+    <%= erb :_downvote, locals: {question: @question} %>
+  <% end %>
+  <div class = 'vote'
+  <% if @total_votes %>
+    <p class="question-points" > Votes: <span><%= @total_votes %></span></p>
+  <% end %>
+
+  </div>
+
+<hr/>
+<% if logged_in? %>
+  <%= erb :'/questions/answers/new', layout: false, locals: {question: @question} %>
+  <%= erb :'/questions/comments/new', layout: false, locals: {question: @question} %>
+<hr/>
+<% end %>
+  <%= erb :'/questions/answers/show', layout: false, locals: {question: @question, user_of_answer: @user_of_answer} %>
+<hr/>
+  <%= erb :'/questions/comments/show', layout: false, locals: {question:@question} %>
