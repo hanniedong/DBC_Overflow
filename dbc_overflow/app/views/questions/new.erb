@@ -1,8 +1,9 @@
 <h2> Ask a question page</h2>
 
-<form action="/questions/new" method="post">
+<form action="/questions" method="post">
     <label>Title</label><br>
     <input type="text" name="question[title]" placeholder="Enter something smart question? Be specific." style="width: 80%;"/>
+    <input type="hidden" name="question[user_id]" value=" <%=session[:user_id] %>">
     <br/>
     <label>Question</label>
     <br/>
