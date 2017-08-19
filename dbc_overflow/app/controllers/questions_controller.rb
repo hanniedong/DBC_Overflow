@@ -1,5 +1,6 @@
 get '/questions' do
 	@questions = Question.all
+  
   # binding.pry
 	erb :'/questions/index'
 end

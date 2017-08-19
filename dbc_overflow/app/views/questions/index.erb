@@ -5,7 +5,13 @@
 	<li>
 	<h2><a href="/questions/<%= question.id %>"><%= question.title %></a></h2>
 		<p><%= question.content %></p>
-			<p><span><%= question.votes %></span> votes</p>
+    <%upvotes = question.votes.where(up_vote:1)  %>
+    <% downvotes = question.votes.where(down_vote:1) %>
+    <% total_votes = upvotes.count - downvotes.count %>
+    <% if total_votes == nil %>
+      <% total_votes = 0 %>
+    <% end %>
+			<p><span><%= total_votes %></span> votes</p>
 		
 	</li>
 <% end %>
